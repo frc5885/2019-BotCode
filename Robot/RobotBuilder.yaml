@@ -189,6 +189,34 @@ Children:
         value: []
     Base: Subsystem
     Name: LiftSubSystem
+  - Children:
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '7'
+      Base: Talon SRX
+      Name: LiftMotor7
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: []
+    Base: Subsystem
+    Name: Front Lift
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -280,14 +308,36 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: LiftSubSystem}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
-        default: &id005 []
+        default: []
         name: Parameter presets
         validators: null
-        value: *id005
+        value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: Lift Cmd
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: []
+        name: Parameter presets
+        validators: null
+        value: []
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: Front Lift Cmd
   Properties: {}
   Base: Commands
   Name: Commands
@@ -309,12 +359,10 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Wiredcats
-      - Bravo\', extension: null, folder: true, name: Wiring file location, validators: null,
-    value: 'C:\Users\Wiredcats - Bravo\Desktop\Deep Space 2019\Robot'}
-  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Wiredcats
-      - Bravo\FRCProjects', extension: null, folder: true, name: Export Directory,
-    validators: null, value: 'C:\Users\Wiredcats - Bravo\Desktop\Deep Space 2019'}
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Bob\',
+    extension: null, folder: true, name: Wiring file location, validators: null, value: 'E:\FRC\2019-BotCode'}
+  Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Bob\FRCProjects',
+    extension: null, folder: true, name: Export Directory, validators: null, value: 'E:\FRC\2019-BotCode'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
