@@ -1,4 +1,4 @@
-See file:///C:/Users/Wiredcats%20-%20Bravo/Desktop/Deep%20Space%202019/Robot/build/tmp/linkFrcUserProgramDebugExecutable/output.txt for all output for linkFrcUserProgramDebugExecutable.
+See file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramDebugExecutable/output.txt for all output for linkFrcUserProgramDebugExecutable.
 linking frcUserProgram successful.
 
-Finished linkFrcUserProgramDebugExecutable, see full log file:///C:/Users/Wiredcats%20-%20Bravo/Desktop/Deep%20Space%202019/Robot/build/tmp/linkFrcUserProgramDebugExecutable/output.txt.
+Finished linkFrcUserProgramDebugExecutable, see full log file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramDebugExecutable/output.txt.

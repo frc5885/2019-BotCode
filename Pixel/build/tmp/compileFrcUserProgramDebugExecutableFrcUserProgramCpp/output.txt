@@ -1,4 +1,18 @@
-See file:///C:/Users/Wiredcats%20-%20Bravo/Desktop/Deep%20Space%202019/Robot/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+See file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+compiling ButtonState.cpp successful.
+
+compiling AutonomousCommand.cpp successful.
+
+compiling Teleop.cpp successful.
+
+compiling ControllerState.cpp successful.
+
+compiling OI.cpp successful.
+
+compiling TankDriveCmd.cpp successful.
+
+compiling Robot.cpp successful.
+
 compiling DriveSubSystem.cpp successful.
 
-Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/Wiredcats%20-%20Bravo/Desktop/Deep%20Space%202019/Robot/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
+Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
