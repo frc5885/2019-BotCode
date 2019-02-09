@@ -13,27 +13,29 @@
     "systemCMacros": [],
     "systemCArgs": [],
     "allLibFiles": [
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-headers.zip_bbc5901b0e22ac527e7d642f2ec68009",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-headers.zip_1bbfce5e2e0c140b468a547dbc8c30e1",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-headers.zip_09b38849dbdfa883c4be908731924be2",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-headers.zip_de8bb156e7c972a7498927ac56d827f7",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-headers.zip_8872a682a8b282d24272d8aebeb3f812",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-headers.zip_8e6098f7e4e3b331e0504d2d66cebd71",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.12.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\api-cpp-5.12.1-headers.zip_e986b26473fb15f3bc8719ff3984c310",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cci-5.12.1-headers.zip_ac01d991886b7cad435836f8b648e3f3",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\core-5.12.1-headers.zip_a0ce3d09c679775751593f941c53f00d",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-sources.zip_1d4902b8d661ea0013db03839171f570",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-sources.zip_7efd4b26972c111bd2d0da91a0d82fbf",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-sources.zip_27f7d7fa68257a63301bac2afc842ab9",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-sources.zip_b3716c5c283bde8ea06849367c6dceeb",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-sources.zip_aabd35fb3d0a8e0795e42daeb8630b18",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-sources.zip_5f7e9586978010d82528c8f2daa3f911",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-sources.zip_77141d62b3e263395a4b585628a50d3d"
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-headers.zip_c5f7002a6c1dfda8aa2899e2594d01fe",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-headers.zip_c1e3733a98824778ae9dc4369a7c5066",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-headers.zip_961601eb64e5456d71ed70c0f9da8e94",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-headers.zip_bb0cec940e93e7a2ed066107bd22e12e",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-headers.zip_3d9a26a763eb0e1008d349ec462fd509",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-headers.zip_6d5c4a8bf55973d76d90eeb158bc5c66",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.13.0-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\api-cpp-5.13.0-headers.zip_8ae4259ad3caa7baeb233953a2fb3079",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cci-5.13.0-headers.zip_d6330e9935e9c49adf09fab2716440ab",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\canutils-5.13.0-headers.zip_2ad929bb93bc974fa970e45d0db54581",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\platform-stub-5.13.0-headers.zip_ac71b9bf27563c732ca95374a3f8ae41",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\core-5.13.0-headers.zip_baff7b978715cd66a8e80bd05adc2160",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-sources.zip_d2c10ca9fef4a09e287ef5192d19cdb5",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-sources.zip_9dcb46c9ade4c7c133c75a9dc6ab4149",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-sources.zip_9f28652342db3ad84df141544ddc4945",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-sources.zip_5b333f7bca5b450503f0c4cb795f1b79",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-sources.zip_8c8defa0812cd4300c0a822153198fd4",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-sources.zip_3f44c805661dec1ebaa017c40eb16cae",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-sources.zip_77141d62b3e263395a4b585628a50d3d"
     ],
     "binaries": [
       {
@@ -42,14 +44,14 @@
           {
             "source": {
               "srcDirs": [
-                "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\cpp"
+                "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\cpp"
               ],
               "includes": [],
               "excludes": []
             },
             "exportedHeaders": {
               "srcDirs": [
-                "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+                "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
               ],
               "includes": [],
               "excludes": []
@@ -74,20 +76,22 @@
           }
         ],
         "libHeaders": [
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-headers.zip_bbc5901b0e22ac527e7d642f2ec68009",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-headers.zip_1bbfce5e2e0c140b468a547dbc8c30e1",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-headers.zip_09b38849dbdfa883c4be908731924be2",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-headers.zip_de8bb156e7c972a7498927ac56d827f7",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-headers.zip_8872a682a8b282d24272d8aebeb3f812",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-headers.zip_8e6098f7e4e3b331e0504d2d66cebd71",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.12.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\api-cpp-5.12.1-headers.zip_e986b26473fb15f3bc8719ff3984c310",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cci-5.12.1-headers.zip_ac01d991886b7cad435836f8b648e3f3",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\core-5.12.1-headers.zip_a0ce3d09c679775751593f941c53f00d",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-headers.zip_c5f7002a6c1dfda8aa2899e2594d01fe",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-headers.zip_c1e3733a98824778ae9dc4369a7c5066",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-headers.zip_961601eb64e5456d71ed70c0f9da8e94",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-headers.zip_bb0cec940e93e7a2ed066107bd22e12e",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-headers.zip_3d9a26a763eb0e1008d349ec462fd509",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-headers.zip_6d5c4a8bf55973d76d90eeb158bc5c66",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.13.0-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\api-cpp-5.13.0-headers.zip_8ae4259ad3caa7baeb233953a2fb3079",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cci-5.13.0-headers.zip_d6330e9935e9c49adf09fab2716440ab",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\canutils-5.13.0-headers.zip_2ad929bb93bc974fa970e45d0db54581",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\platform-stub-5.13.0-headers.zip_ac71b9bf27563c732ca95374a3f8ae41",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\core-5.13.0-headers.zip_baff7b978715cd66a8e80bd05adc2160",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
         ]
       }
     ],
@@ -95,7 +99,7 @@
       {
         "source": {
           "srcDirs": [
-            "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\cpp"
+            "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\cpp"
           ],
           "includes": [],
           "excludes": []
@@ -122,7 +126,7 @@
       {
         "source": {
           "srcDirs": [
-            "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+            "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
           ],
           "includes": [],
           "excludes": []
@@ -165,27 +169,29 @@
     "systemCMacros": [],
     "systemCArgs": [],
     "allLibFiles": [
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-headers.zip_bbc5901b0e22ac527e7d642f2ec68009",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-headers.zip_1bbfce5e2e0c140b468a547dbc8c30e1",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-headers.zip_09b38849dbdfa883c4be908731924be2",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-headers.zip_de8bb156e7c972a7498927ac56d827f7",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-headers.zip_8872a682a8b282d24272d8aebeb3f812",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-headers.zip_8e6098f7e4e3b331e0504d2d66cebd71",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.12.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\api-cpp-5.12.1-headers.zip_e986b26473fb15f3bc8719ff3984c310",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cci-5.12.1-headers.zip_ac01d991886b7cad435836f8b648e3f3",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\core-5.12.1-headers.zip_a0ce3d09c679775751593f941c53f00d",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-sources.zip_1d4902b8d661ea0013db03839171f570",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-sources.zip_7efd4b26972c111bd2d0da91a0d82fbf",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-sources.zip_27f7d7fa68257a63301bac2afc842ab9",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-sources.zip_b3716c5c283bde8ea06849367c6dceeb",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-sources.zip_aabd35fb3d0a8e0795e42daeb8630b18",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-sources.zip_5f7e9586978010d82528c8f2daa3f911",
-      "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-sources.zip_77141d62b3e263395a4b585628a50d3d"
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-headers.zip_c5f7002a6c1dfda8aa2899e2594d01fe",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-headers.zip_c1e3733a98824778ae9dc4369a7c5066",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-headers.zip_961601eb64e5456d71ed70c0f9da8e94",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-headers.zip_bb0cec940e93e7a2ed066107bd22e12e",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-headers.zip_3d9a26a763eb0e1008d349ec462fd509",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-headers.zip_6d5c4a8bf55973d76d90eeb158bc5c66",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.13.0-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\api-cpp-5.13.0-headers.zip_8ae4259ad3caa7baeb233953a2fb3079",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cci-5.13.0-headers.zip_d6330e9935e9c49adf09fab2716440ab",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\canutils-5.13.0-headers.zip_2ad929bb93bc974fa970e45d0db54581",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\platform-stub-5.13.0-headers.zip_ac71b9bf27563c732ca95374a3f8ae41",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\core-5.13.0-headers.zip_baff7b978715cd66a8e80bd05adc2160",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-sources.zip_d2c10ca9fef4a09e287ef5192d19cdb5",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-sources.zip_9dcb46c9ade4c7c133c75a9dc6ab4149",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-sources.zip_9f28652342db3ad84df141544ddc4945",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-sources.zip_5b333f7bca5b450503f0c4cb795f1b79",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-sources.zip_8c8defa0812cd4300c0a822153198fd4",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-sources.zip_3f44c805661dec1ebaa017c40eb16cae",
+      "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-sources.zip_77141d62b3e263395a4b585628a50d3d"
     ],
     "binaries": [
       {
@@ -194,14 +200,14 @@
           {
             "source": {
               "srcDirs": [
-                "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\cpp"
+                "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\cpp"
               ],
               "includes": [],
               "excludes": []
             },
             "exportedHeaders": {
               "srcDirs": [
-                "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+                "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
               ],
               "includes": [],
               "excludes": []
@@ -224,20 +230,22 @@
           }
         ],
         "libHeaders": [
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.1.1-headers.zip_bbc5901b0e22ac527e7d642f2ec68009",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\hal-cpp-2019.1.1-headers.zip_1bbfce5e2e0c140b468a547dbc8c30e1",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.1.1-headers.zip_09b38849dbdfa883c4be908731924be2",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.1.1-headers.zip_de8bb156e7c972a7498927ac56d827f7",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cscore-cpp-2019.1.1-headers.zip_8872a682a8b282d24272d8aebeb3f812",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.1.1-headers.zip_8e6098f7e4e3b331e0504d2d66cebd71",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.12.1-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\api-cpp-5.12.1-headers.zip_e986b26473fb15f3bc8719ff3984c310",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\cci-5.12.1-headers.zip_ac01d991886b7cad435836f8b648e3f3",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\build\\tmp\\expandedArchives\\core-5.12.1-headers.zip_a0ce3d09c679775751593f941c53f00d",
-          "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpilibc-cpp-2019.2.1-headers.zip_c5f7002a6c1dfda8aa2899e2594d01fe",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\hal-cpp-2019.2.1-headers.zip_c1e3733a98824778ae9dc4369a7c5066",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiutil-cpp-2019.2.1-headers.zip_961601eb64e5456d71ed70c0f9da8e94",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\ntcore-cpp-2019.2.1-headers.zip_bb0cec940e93e7a2ed066107bd22e12e",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cscore-cpp-2019.2.1-headers.zip_3d9a26a763eb0e1008d349ec462fd509",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cameraserver-cpp-2019.2.1-headers.zip_6d5c4a8bf55973d76d90eeb158bc5c66",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\opencv-cpp-3.4.4-4-headers.zip_ed19d56be47d37c8193b8f0377a9cfe6",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\chipobject-2019.12.1-headers.zip_45012665afb78c4c4816a3a35e8fe8aa",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\netcomm-2019.12.1-headers.zip_97d07b8af9f28e0504c6dc239ac1f176",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\wpiapi-cpp-5.13.0-headers.zip_97f59bce4d16b98c31d785272d2cbf90",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\api-cpp-5.13.0-headers.zip_8ae4259ad3caa7baeb233953a2fb3079",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\cci-5.13.0-headers.zip_d6330e9935e9c49adf09fab2716440ab",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\canutils-5.13.0-headers.zip_2ad929bb93bc974fa970e45d0db54581",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\platform-stub-5.13.0-headers.zip_ac71b9bf27563c732ca95374a3f8ae41",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\build\\tmp\\expandedArchives\\core-5.13.0-headers.zip_baff7b978715cd66a8e80bd05adc2160",
+          "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
         ]
       }
     ],
@@ -245,7 +253,7 @@
       {
         "source": {
           "srcDirs": [
-            "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\cpp"
+            "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\cpp"
           ],
           "includes": [],
           "excludes": []
@@ -270,7 +278,7 @@
       {
         "source": {
           "srcDirs": [
-            "C:\\Users\\Wiredcats - Bravo\\Desktop\\Deep Space 2019\\Robot\\src\\main\\include"
+            "C:\\FRC-5885-GIT\\2019-BotCode\\Pixel\\src\\main\\include"
           ],
           "includes": [],
           "excludes": []
