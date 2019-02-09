@@ -28,6 +28,7 @@ void TankDriveCmd::Initialize()
     // initialize our local accessors
     driveSubSystem = Robot::driveSubSystem.get();
     controllerState = Robot::controllerState1.get();
+	SetSpeedScale(1.0);	//TODO program in control system!!!
     printf("Tank drive command initialized\n");
 }
 
@@ -51,6 +52,15 @@ void TankDriveCmd::Execute()
 		float temp = leftY;
 		leftY = rightY;
 		rightY = temp;
+	}
+
+	if (this->controllerState->GetButtonB()) 
+	{
+		this->SetSpeedScale(.25); // 'slow' mode for motors
+	}
+	else
+	{
+		this->SetSpeedScale(1.0);
 	}
 
     this->driveSubSystem->SetLeftSpeed((double)leftY);
@@ -85,6 +95,7 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 	}
 
 	// data points on drive curve parabola
+	//double x2 = .62, y2 = .36, y3 = 1.0;
 	double x2 = .5, y2 = .5, y3 = 1.0;
 
 	// variable a=a in equation b=b in equation
@@ -93,5 +104,6 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 	double a = y3 - b;
 
 	// Returns the corresponding motor speed
-	return (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	double motorSpeed = (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	return fabs(motorSpeed * this->motorSpeedScale);
 }

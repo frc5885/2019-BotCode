@@ -46,8 +46,18 @@ private:
 private:
     DriveSubSystem* driveSubSystem;
     ControllerState* controllerState;
+	double motorSpeedScale;	// 0 = motors won't run, 1 = full blast
 
 // Methods
+public:
+	void SetSpeedScale(double scaleFactor)
+	{
+		// limit from 0 - 1
+		scaleFactor = (scaleFactor < 0.0) ? 0.0 : scaleFactor;
+		scaleFactor = (scaleFactor > 1.0) ? 1.0 : scaleFactor;
+		this->motorSpeedScale = scaleFactor;
+	}
+	
 private:
     double SmoothDriveCurve(double joystickYPosition) const;
 };
