@@ -15,9 +15,11 @@ public:
 	ControllerState(int port);
 	virtual ~ControllerState();
 
-//properties
-private:
+// Properties
+public:
 	frc::Joystick m_controller;//X-Box Controller
+
+private:
 	float m_leftY = 0.0; //Left joystick y-value
 	float m_leftX = 0.0; // Left joystick X-value
 	ButtonState m_leftJoystickButton; // left joystick button

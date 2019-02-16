@@ -29,7 +29,7 @@ void EjectCmd::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void EjectCmd::Execute() {
-
+    Robot::hatchSubSystem->Periodic();
 }
 
 // Make this return true when this Command no longer needs to run execute()
