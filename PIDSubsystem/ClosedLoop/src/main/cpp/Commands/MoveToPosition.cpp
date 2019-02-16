@@ -72,7 +72,7 @@ void MoveToPosition::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void MoveToPosition::Execute() 
 {
-//    printf("MoveToPosition::Execute\n");
+    printf("MoveToPosition::Execute\n");
 
     if (Robot::positionController->OnTarget())
     {
@@ -84,8 +84,7 @@ void MoveToPosition::Execute()
     {
         // set initial setpoint to tx angle from limelight
         Robot::controllerState->ForceButtonState(BUTTON_A, false);
-    	std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
-	    Robot::positionController->SetSetpointRelative(table->GetNumber("tx",0.0));
+	    Robot::positionController->SetSetpointRelative(Robot::visionNetworkTable->GetNumber("tx",0.0));
     }
 
     // slave other 3 motors to the motor with the encoder

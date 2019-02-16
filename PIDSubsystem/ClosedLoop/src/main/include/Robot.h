@@ -29,6 +29,15 @@
 #include "OI.h"
 #include "ControllerState.h"
 
+// Limelight LED settings
+enum
+{
+	LL_LEDS_ON = 0,
+	LL_LEDS_OFF = 1,
+	LL_LEDS_FORCE_BLINK = 2,
+	LL_LEDS_FORCE_ON = 3
+};
+
 class Robot : public frc::TimedRobot 
 {
 public:
@@ -51,6 +60,7 @@ public:
 	void AutonomousPeriodic() override;
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
+	void TestInit() override;
 	void TestPeriodic() override;
 };
 #endif
