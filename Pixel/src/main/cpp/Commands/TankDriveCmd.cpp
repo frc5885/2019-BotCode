@@ -84,14 +84,15 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 		return 0.0;		// allow for joystick calibration error
 	}
 
-	// data points on drive curve parabola
-	double x2 = .5, y2 = .5, y3 = 1.0;
+	// // data points on drive curve parabola
+	// double x2 = .5, y2 = .5, y3 = 1.0;
 
-	// variable a=a in equation b=b in equation
-	//ax^2+bx+c the Equation for a parabola
-	double b = ((y3 * x2 * x2) - y2) / ((x2 * x2) - x2);
-	double a = y3 - b;
+	// // variable a=a in equation b=b in equation
+	// //ax^2+bx+c the Equation for a parabola
+	// double b = ((y3 * x2 * x2) - y2) / ((x2 * x2) - x2);
+	// double a = y3 - b;
 
-	// Returns the corresponding motor speed
-	return (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	// // Returns the corresponding motor speed
+	// return (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	return (pow(joystickYPosition, 2.7));
 }

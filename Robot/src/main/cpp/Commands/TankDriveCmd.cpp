@@ -38,8 +38,8 @@ void TankDriveCmd::Execute()
 	// get raw joystick values and +- sign
 	//this pulls the joystick values into the program.
 	//(gets the state) gets what you want to do
-	float leftX = -this->controllerState->GetLeftY();
-	float rightX = -this->controllerState->GetRightY();
+	float leftX = -(this->controllerState->GetLeftY());
+	float rightX = -(this->controllerState->GetRightY());
 
 	// compute the adjusted motor values based n joystick / motor curve
 	//this takes the value and matches it with the closest value on our parabola
@@ -96,14 +96,15 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 
 	// data points on drive curve parabola
 	//double x2 = .62, y2 = .36, y3 = 1.0;
-	double x2 = .5, y2 = .5, y3 = 1.0;
+	// double x2 = .5, y2 = .5, y3 = 1.0;
 
-	// variable a=a in equation b=b in equation
-	//ax^2+bx+c the Equation for a parabola
-	double b = ((y3 * x2 * x2) - y2) / ((x2 * x2) - x2);
-	double a = y3 - b;
+	// // variable a=a in equation b=b in equation
+	// //ax^2+bx+c the Equation for a parabola
+	// double b = ((y3 * x2 * x2) - y2) / ((x2 * x2) - x2);
+	// double a = y3 - b;
 
-	// Returns the corresponding motor speed
-	double motorSpeed = (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	// // Returns the corresponding motor speed
+	// double motorSpeed = (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
+	double motorSpeed = (pow(joystickYPosition, 2.7));
 	return fabs(motorSpeed * this->motorSpeedScale);
 }

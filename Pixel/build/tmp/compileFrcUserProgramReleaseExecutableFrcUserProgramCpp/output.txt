@@ -1,18 +1,4 @@
 See file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
-compiling ButtonState.cpp successful.
-
-compiling Teleop.cpp successful.
-
-compiling ControllerState.cpp successful.
-
-compiling OI.cpp successful.
-
 compiling TankDriveCmd.cpp successful.
-
-compiling AutonomousCommand.cpp successful.
-
-compiling DriveSubSystem.cpp successful.
-
-compiling Robot.cpp successful.
 
 Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/FRC-5885-GIT/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
