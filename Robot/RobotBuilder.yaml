@@ -630,7 +630,7 @@ Properties:
   Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\pepd9\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'E:\FRC\2019-BotCode'}
   Export Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\pepd9\FRCProjects',
-    extension: null, folder: true, name: Export Directory, validators: null, value: 'E:\FRC\2019-BotCode'}
+    extension: null, folder: true, name: Export Directory, validators: null, value: 'C:\FRC-5885-GIT\2019-BotCode'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
 Base: Robot
