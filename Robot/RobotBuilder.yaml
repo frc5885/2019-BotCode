@@ -226,7 +226,7 @@ Children:
           default: '0'
           name: PCM ID
           validators: [PCMCompID]
-          value: '0'
+          value: '11'
       Base: Compressor
       Name: Compressor 1
     - Children: []
@@ -324,7 +324,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: Hatch}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants

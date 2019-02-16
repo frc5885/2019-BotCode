@@ -47,20 +47,29 @@ void TankDriveCmd::Execute()
 	float leftY = SignOf(leftX) * SmoothDriveCurve(fabsf(leftX));
 	float rightY = SignOf(rightX) * SmoothDriveCurve(fabsf(rightX));
     
-	if (this->controllerState->GetButtonA()) // Invert drive code
-	{
-		float temp = leftY;
-		leftY = rightY;
-		rightY = temp;
-	}
+	//Code used for inverting driving direction. This is not used in the 2019 season as it was deemed not necessary.
+	// if (this->controllerState->GetButtonA()) // Invert drive code
+	// {
+	// 	float temp = leftY;
+	// 	leftY = rightY;
+	// 	rightY = temp;
+	// }
 
-	if (this->controllerState->GetButtonB()) 
+	//Old code for toggle of the slowmode. Changed for the 2019 season to be a trigger to be held rather than a toggle
+	// if (this->controllerState->GetButtonB()) 
+	// {
+	// 	this->SetSpeedScale(.25); // 'slow' mode for motors
+	// }
+	// else
+	// {
+	// 	this->SetSpeedScale(1.0);
+	// }
+
+	if (this->controllerState->GetRightTrig() > 0.4) //Triggers return float value -- when pressed > threshold trigger.
 	{
-		this->SetSpeedScale(.25); // 'slow' mode for motors
-	}
-	else
-	{
-		this->SetSpeedScale(1.0);
+		this->SetSpeedScale(1.0); //'fast'mode when trigger pressed.
+	} else {
+		this->SetSpeedScale(0.25); //'slow' mode by default.
 	}
 
     this->driveSubSystem->SetLeftSpeed((double)leftY);
