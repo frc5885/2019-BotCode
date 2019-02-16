@@ -167,6 +167,15 @@ void ControllerState::ForceButtonState(int button, bool pressed)
 	}
 }
 
+ void ControllerState::InitializeButtonStates()
+{
+	// 'un-press' all buttons - call this in TeleopInit()
+	ForceButtonState(BUTTON_X, false);
+	ForceButtonState(BUTTON_Y, false);
+	ForceButtonState(BUTTON_A, false);
+	ForceButtonState(BUTTON_B, false);
+}
+
 float ControllerState::GetAdjustedJoystickValue(float rawValue, RobotSide side) const
 {
 	float adjustedValue = rawValue;

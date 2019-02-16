@@ -74,7 +74,10 @@ public:
     void GetState();
     void ForceButtonState(int button, bool pressed);
 
-    //Sets the initial joystick variables on first read of controller state
+    // Initialize all buttons to 'un-pressed'
+    void InitializeButtonStates();
+    
+    // Sets the initial joystick variables on first read of controller state
     void SetInitialJoystickVariables();
 private:
     float GetAdjustedJoystickValue(float rawValue, RobotSide side)const;
