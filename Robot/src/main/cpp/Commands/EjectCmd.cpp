@@ -33,20 +33,18 @@ void EjectCmd::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void EjectCmd::Execute() 
 {
-	/// definitions are bass-ackward and need to be changed in hatchSubSystem(kForward->kReverse)
-	
     // actuate gripper for the hatch
     if (controllerState->m_controller.GetRawButton(BUTTON_B))
     {
-        Robot::hatchSubSystem->RetractGripper();
+        Robot::hatchSubSystem->ExtendGripper();
     }
     else
     {
-        Robot::hatchSubSystem->ExtendGripper();
+        Robot::hatchSubSystem->RetractGripper();
     }
 
     // actuate pins to eject the hatch
-	if (Robot::hatchSubSystem->GetEjectorState() == frc::DoubleSolenoid::kForward)
+	if (Robot::hatchSubSystem->GetEjectorState() == frc::DoubleSolenoid::kReverse)
 	{
 		// user released right bumper and reversed the solenoid
 		Robot::hatchSubSystem->EjectorOff();
@@ -54,16 +52,12 @@ void EjectCmd::Execute()
 	else if (controllerState->GetRightBumper())
 	{
 		// driver pressed right bumper and solenoid is off
-		Robot::hatchSubSystem->EjectorReverse();
+		Robot::hatchSubSystem->EjectorForward();
 	}
-	else
+	else if (Robot::hatchSubSystem->GetEjectorState() == frc::DoubleSolenoid::kForward)
 	{
-		// this should be the 'normal' code path - no bumper pressed, solenoid off
-		if (Robot::hatchSubSystem->GetEjectorState() == frc::DoubleSolenoid::kReverse)
-		{
-			// driver release right bumper and solenoid is on
-			Robot::hatchSubSystem->EjectorForward();
-		}
+		// driver release right bumper and solenoid is on
+		Robot::hatchSubSystem->EjectorReverse();
 	}
 
 	// pivot command
