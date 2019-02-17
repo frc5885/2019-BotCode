@@ -35,7 +35,7 @@ void LiftCmd::Initialize()
 void LiftCmd::Execute()
 {
     float motorSpeed = controllerState->GetLeftY();
-    this->liftSubSystem->SetMotorSpeed(0.25 * motorSpeed);
+    this->liftSubSystem->SetMotorSpeed(0.45 * motorSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()

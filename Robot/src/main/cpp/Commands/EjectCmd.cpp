@@ -34,7 +34,7 @@ void EjectCmd::Initialize()
 void EjectCmd::Execute() 
 {
     // actuate gripper for the hatch
-    if (controllerState->m_controller.GetRawButton(BUTTON_B))
+    if (this->controllerState->GetLeftTrig() > 0.4)
     {
         Robot::hatchSubSystem->ExtendGripper();
     }
@@ -61,7 +61,7 @@ void EjectCmd::Execute()
 	}
 
 	// pivot command
-   	if (this->controllerState->GetButtonA())
+   	if (this->controllerState->GetLeftBumper())
    	{
        	Robot::hatchSubSystem->PivotForward();
    	}
@@ -69,6 +69,7 @@ void EjectCmd::Execute()
    	{
        	Robot::hatchSubSystem->PivotReverse();
    	}
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
