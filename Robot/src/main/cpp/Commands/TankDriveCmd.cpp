@@ -69,7 +69,7 @@ void TankDriveCmd::Execute()
 	{
 		this->SetSpeedScale(1.0); //'fast'mode when trigger pressed.
 	} else {
-		this->SetSpeedScale(0.25); //'slow' mode by default.
+		this->SetSpeedScale(0.35); //'slow' mode by default.
 	}
 
     this->driveSubSystem->SetLeftSpeed((double)leftY);
