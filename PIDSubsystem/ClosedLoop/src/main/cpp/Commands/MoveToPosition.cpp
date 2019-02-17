@@ -88,9 +88,9 @@ void MoveToPosition::Execute()
     }
 
     // slave other 3 motors to the motor with the encoder
-    Robot::positionController->GetTalonSRX5()->Set(ControlMode::Follower, 6);
-    Robot::positionController->GetTalonSRX7()->Set(ControlMode::Follower, 6);
-    Robot::positionController->GetTalonSRX8()->Set(ControlMode::Follower, 6);
+    Robot::positionController->GetTalonSRX5()->Set(ControlMode::Follower, 3);
+    Robot::positionController->GetTalonSRX7()->Set(ControlMode::Follower, 3);
+    Robot::positionController->GetTalonSRX8()->Set(ControlMode::Follower, 3);
 }
 
 // Make this return true when this Command no longer needs to run execute()
