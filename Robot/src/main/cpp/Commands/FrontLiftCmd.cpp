@@ -27,7 +27,7 @@ void FrontLiftCmd::Initialize()
     // initialize our local accessors
     liftSubSystem = Robot::frontLift.get();
     controllerState = Robot::controllerState2.get();
-    printf("Lift command initialized\n");
+    printf("Frontlift command initialized\n");
 }
 
 // Called repeatedly when this Command is scheduled to run

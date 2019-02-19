@@ -80,13 +80,13 @@ void HatchSubSystem::PivotReverse()
 
 void HatchSubSystem::ExtendGripper()
 {
-    printf("Gripper extended\n");
+    // printf("Gripper extended\n");
     this->gripper->Set(frc::DoubleSolenoid::kForward);
 }
 
 void HatchSubSystem::RetractGripper()
 {
-    printf("Gripper retracted\n");
+    // printf("Gripper retracted\n");
     this->gripper->Set(frc::DoubleSolenoid::kReverse);
 }
 
