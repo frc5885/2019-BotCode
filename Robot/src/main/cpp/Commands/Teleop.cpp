@@ -13,6 +13,7 @@
 #include "Commands/LiftCmd.h"
 #include "Commands/FrontLiftCmd.h"
 #include "Commands/Hatch.h"
+#include "Commands/VisionCmd.h"
 
 // #include "Commands/PivotCmd.h"
 // #include "Commands/GripCmd.h"
@@ -46,6 +47,7 @@ Teleop::Teleop()
     AddParallel(new LiftCmd());
     AddParallel(new FrontLiftCmd());
     AddParallel(new Hatch());
+    AddParallel(new VisionCmd());
 
     printf("Teleop command group initialized\n");
 }
