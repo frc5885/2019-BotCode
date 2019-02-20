@@ -1,0 +1,8 @@
+See file:///C:/Users/5885/Documents/DeepSpace2019/src/LiftWithQuadEncoders/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+compiling Robot.cpp failed.
+C:\Users\5885\Documents\DeepSpace2019\src\LiftWithQuadEncoders\src\main\cpp\Robot.cpp: In member function 'virtual void Robot::RobotInit()':
+C:\Users\5885\Documents\DeepSpace2019\src\LiftWithQuadEncoders\src\main\cpp\Robot.cpp:54:41: error: expected ')' before 'kTimeoutMs'
+   _talon5->ConfigPeakOutputForward(.5,0 kTimeoutMs);
+                                         ^~~~~~~~~~
+
+Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/5885/Documents/DeepSpace2019/src/LiftWithQuadEncoders/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
