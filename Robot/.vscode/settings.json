@@ -57,6 +57,7 @@
   "typeinfo": "cpp",
   "utility": "cpp",
   "optional": "cpp",
-  "string_view": "cpp"
+  "string_view": "cpp",
+  "*.inc": "cpp"
 }
 }
