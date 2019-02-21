@@ -28,39 +28,68 @@ int printCount = 0;
 void LiftCmd::Initialize()
 {
     // initialize our local accessors
-    liftSubSystem = Robot::liftSubSystem.get();
     controllerState = Robot::controllerState2.get();
+    liftSubSystem = Robot::liftSubSystem.get();
+    liftSubSystem->ZeroSensors();
     printf("New Lift command initialized\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LiftCmd::Execute()
 {
-    float motorSpeed = controllerState->GetLeftY();
-
-    if(this->controllerState->GetLeftTrig() > 0.4)
-    { //Full speed motor for back racks when raising and holding left shoulder button
-        this->liftSubSystem->SetMotorSpeed(motorSpeed);
+    if (this->controllerState->m_controller.GetRawButton(BUMPER_LEFT))
+    {
+        // set closed loop mode for talons 5 & 7 (level lifting of robot)
+        this->ClosedLoopExecute();
     }
     else
-    { //40% speed the rest of the time for balancing with weaker front lift
-        this->liftSubSystem->SetMotorSpeed(0.37 * motorSpeed);
+    { 
+        // set open loop mode for talons 5 & 7 (front & rear lift are separate)
+        //this->OpenLoopExecute();
     }
-    // this->liftSubSystem->SetMotorSpeed(0.3 * motorSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LiftCmd::IsFinished() {
+bool LiftCmd::IsFinished()
+{
     return false;
 }
 
 // Called once after isFinished returns true
-void LiftCmd::End() {
-
+void LiftCmd::End()
+{
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LiftCmd::Interrupted() {
+void LiftCmd::Interrupted()
+{
+}
 
+////// user defined methods ///////
+
+void  LiftCmd::OpenLoopExecute()
+{
+    // put the drive subsystem into open-loop mode
+    Robot::liftIsInClosedLoop = false;
+
+    // set the motor speed
+    float motorSpeed = controllerState->GetLeftY();
+
+    if (this->controllerState->GetLeftTrig() > 0.4)
+    { 
+        // Full speed motor for back racks when raising and holding left shoulder button
+        this->liftSubSystem->SetMotorSpeed(motorSpeed);
+    }
+    else
+    { 
+        // 40% speed the rest of the time for balancing with weaker front lift
+        this->liftSubSystem->SetMotorSpeed(0.37 * motorSpeed);
+    }
+}
+
+void LiftCmd::ClosedLoopExecute()
+{
+    this->liftSubSystem->SetLeftJoystickY(this->controllerState->GetLeftY());
+    Robot::liftIsInClosedLoop = true;
 }

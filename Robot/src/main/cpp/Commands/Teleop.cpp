@@ -45,7 +45,7 @@ Teleop::Teleop()
 
     AddParallel(new TankDriveCmd());
     AddParallel(new LiftCmd());
-    AddParallel(new FrontLiftCmd());
+///    AddParallel(new FrontLiftCmd());
     AddParallel(new Hatch());
     AddParallel(new VisionCmd());
 

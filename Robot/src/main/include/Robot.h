@@ -72,6 +72,9 @@ public:
     static std::unique_ptr<ControllerState> controllerState1;
     static std::unique_ptr<ControllerState> controllerState2;
 
+	// lift closed loop flag
+	static bool liftIsInClosedLoop;
+	
     // Command Groups
     static std::unique_ptr<Teleop> teleop;
 
