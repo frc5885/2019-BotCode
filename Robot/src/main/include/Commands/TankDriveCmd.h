@@ -60,6 +60,7 @@ public:
 	
 private:
     double SmoothDriveCurve(double joystickYPosition) const;
+	void CheckVisionSystem();
 };
 
 #endif

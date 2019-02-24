@@ -29,7 +29,7 @@ void LiftCmd::Initialize()
     controllerState = Robot::controllerState2.get();
     liftSubSystem = Robot::liftSubSystem.get();
     liftSubSystem->ZeroSensors();
-    printf("New Lift command initialized\n");
+    printf("Lift command initialized\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -39,6 +39,11 @@ void LiftCmd::Execute()
     {
         // set closed loop mode for talons 5 & 7 (level lifting of robot)
         this->ClosedLoopExecute();
+    }
+    else if (this->controllerState->m_controller.GetRawButton(BUMPER_RIGHT))
+    {
+        // set 'auto' mode
+        this->AutoExecute();
     }
     else
     { 
@@ -56,6 +61,7 @@ bool LiftCmd::IsFinished()
 // Called once after isFinished returns true
 void LiftCmd::End()
 {
+    this->liftSubSystem->StopMotors();
 }
 
 // Called when another command which requires one or more of the same
@@ -68,26 +74,36 @@ void LiftCmd::Interrupted()
 
 void  LiftCmd::OpenLoopExecute()
 {
-    // put the drive subsystem into open-loop mode
-    Robot::liftIsInClosedLoop = false;
+    // rear motor speed from left joystick
+    float rearMotorSpeed = controllerState->GetLeftY() * .5;
 
-    // set the motor speed
-    float motorSpeed = controllerState->GetLeftY();
+    // weaker front motor speed is linear with right joystick
+    float frontMotorSpeed = controllerState->GetRightY();
 
-    if (this->controllerState->GetLeftTrig() > 0.4)
-    { 
-        // Full speed motor for back racks when raising and holding left shoulder button
-        this->liftSubSystem->SetMotorSpeed(motorSpeed);
-    }
-    else
-    { 
-        // 40% speed the rest of the time for balancing with weaker front lift
-        this->liftSubSystem->SetMotorSpeed(0.37 * motorSpeed);
-    }
+    // pass motor speeds to subsystem
+    this->liftSubSystem->SetRearMotorSpeed(rearMotorSpeed);
+    this->liftSubSystem->SetFrontMotorSpeed(frontMotorSpeed);
+
+    // put the drive subsystem into manual open-loop mode
+    Robot::liftMode = LiftMode::Manual;
 }
 
 void LiftCmd::ClosedLoopExecute()
 {
+    // set the left joystick Y value to manually drive the rear lift
     this->liftSubSystem->SetLeftJoystickY(this->controllerState->GetLeftY());
-    Robot::liftIsInClosedLoop = true;
+
+    // put the drive subsystem into manual closed loop level lift mode
+    Robot::liftMode = LiftMode::Level;
+}
+
+void LiftCmd::AutoExecute()
+{
+    // if we aren't already retracting the front lift...
+    if (Robot::liftMode != LiftMode::RetractFront)
+    {
+        // put the drive subsystem into auto closed loop level lift mode
+        // this mode will automatically change to retract the front lift when finished
+        Robot::liftMode = LiftMode::AutoLevel;
+    }
 }

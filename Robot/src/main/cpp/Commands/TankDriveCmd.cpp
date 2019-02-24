@@ -29,12 +29,24 @@ void TankDriveCmd::Initialize()
     driveSubSystem = Robot::driveSubSystem.get();
     controllerState = Robot::controllerState1.get();
 	SetSpeedScale(1.0);	//TODO program in control system!!!
-    printf("Tank drive command initialized\n");
+	Robot::hatchMode = HatchEjectMode::PortNotInRange;
+
+    driveSubSystem->SetSetpointRelative(0.0);
+    driveSubSystem->Enable();              // starts PID controller
+	printf("Tank drive command initialized\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TankDriveCmd::Execute()
 {
+	CheckVisionSystem();
+
+	if (Robot::hatchMode == HatchEjectMode::AligningWithPort ||
+		Robot::hatchMode == HatchEjectMode::EjectingHatch)
+	{
+		return;	// we are in an 'auto' mode and don't want to manually drive the robot
+	}
+
 	// get raw joystick values and +- sign
 	//this pulls the joystick values into the program.
 	//(gets the state) gets what you want to do
@@ -115,4 +127,48 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 	// Returns the corresponding motor speed
 	double motorSpeed = (a * joystickYPosition * joystickYPosition) + (b * joystickYPosition);
 	return fabs(motorSpeed * this->motorSpeedScale);
+}
+
+void TankDriveCmd::CheckVisionSystem()
+{
+    // get horizontal angle to target
+    double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
+
+    // if we are close to a port...
+    if (Robot::visionNetworkTable->GetNumber("tv", 0.0) == 1.0 && std::abs(tx) < 5.0)
+    {
+		if (Robot::hatchMode == HatchEjectMode::AligningWithPort &&
+			this->driveSubSystem->OnTarget())
+		{
+			// reset the setpoint and set mode to eject the hatch
+			this->driveSubSystem->SetSetpointRelative(0.0);
+			Robot::hatchMode =  HatchEjectMode::EjectingHatch;
+		}
+
+        // a port is in range to apply closed loop positioning
+        if (Robot::hatchMode == HatchEjectMode::PortNotInRange)
+        {
+            Robot::hatchMode = HatchEjectMode::PortInRange;
+        }
+
+        else if (this->controllerState->GetButtonX() &&
+            Robot::hatchMode != HatchEjectMode::EjectingHatch)
+        {
+			this->controllerState->ForceButtonState(BUTTON_X, false);	// reset
+            Robot::hatchMode == HatchEjectMode::AligningWithPort;
+
+			// set initial setpoint to tx angle from limelight
+        	this->driveSubSystem->SetSetpointRelative(tx);
+        }
+
+        // rumble the controller for the operator
+        Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, .9);
+    }
+    else
+    {
+        Robot::hatchMode = HatchEjectMode::PortNotInRange;
+        Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
+    }
 }

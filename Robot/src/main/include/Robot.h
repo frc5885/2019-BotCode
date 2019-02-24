@@ -16,6 +16,27 @@
 #include "frc/commands/Command.h"
 #include "frc/livewindow/LiveWindow.h"
 
+// General enums
+
+// current mode for the robot lift system
+enum LiftMode
+{
+	Disabled,
+	Manual,
+	Level,
+	AutoLevel,
+	RetractFront
+};
+
+// current mode for the hatch ejection system
+enum HatchEjectMode
+{
+	PortNotInRange,
+	PortInRange,
+	AligningWithPort,
+	EjectingHatch
+};
+
 // General functions
 
 // return +-1 based on whether a number > or < 0
@@ -47,10 +68,10 @@ inline bool Equals (double value1, double value2, double tolerance)
 
 // manually defined commands
 #include "Commands/Teleop.h"
-#include "Commands/VisionCmd.h"
 
 
-class Robot : public frc::TimedRobot {
+class Robot : public frc::TimedRobot 
+{
 public:
 	frc::Command* autonomousCommand = nullptr;
 	static std::unique_ptr<OI> oi;
@@ -69,9 +90,12 @@ public:
     static std::unique_ptr<ControllerState> controllerState1;
     static std::unique_ptr<ControllerState> controllerState2;
 
-	// lift closed loop flag
-	static bool liftIsInClosedLoop;
+	// lift control mode flag
+	static LiftMode liftMode;
 	
+	// hatch ejection system flag
+	static HatchEjectMode hatchMode;
+
     // Command Groups
     static std::unique_ptr<Teleop> teleop;
 

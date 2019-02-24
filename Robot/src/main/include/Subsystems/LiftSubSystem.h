@@ -32,7 +32,10 @@ enum Constants
 	 * set to zero to skip waiting for confirmation, set to nonzero to wait
 	 * and report to DS if action fails.
 	 */
-	kTimeoutMs = 30
+	kTimeoutMs = 30,
+
+	// encoder counts per inch of rack movement
+	kCountsPerInch = 17013
 };
 
 /**
@@ -67,16 +70,25 @@ private:
     std::string logStr;     // string for logged output
     int logStrLoops;        // loop countr for logged strings
     int logStrDelay;        // delay in output for logged strings
+	double targetHeight;	// height to lift robot for habitat
 
 // Methods
 public:
     void ZeroSensors();
+	void StopMotors();	
 
-    void SetMotorSpeed(const double& speed)
+    void SetFrontMotorSpeed(const double& speed)
     {
         if (speed >= -1.0 && speed <= 1.0)
         {
             this->frontMotorSpeed = speed;
+        }
+    }
+
+    void SetRearMotorSpeed(const double& speed)
+    {
+        if (speed >= -1.0 && speed <= 1.0)
+        {
 			this->rearMotorSpeed = speed;
         }
     }
@@ -86,8 +98,17 @@ public:
         this->leftJoystickY = yValue;
     }
 
+	void SetTargetHeight(double tgtHt)
+	{
+		this->targetHeight = tgtHt;
+	}
+
 private:
+	void RunOpenLoop();
     void RunClosedLoop();
+	void RunAutoLevel();
+	void RunRetractFrontLift();
+	void PrintOutput(int tgtPos);
 };
 
 #endif

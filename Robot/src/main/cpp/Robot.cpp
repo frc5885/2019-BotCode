@@ -31,9 +31,11 @@ std::unique_ptr<ControllerState> Robot::controllerState2;
 // Command groups
 std::unique_ptr<Teleop> Robot::teleop;
 
-// lift closed loop flag
-bool Robot::liftIsInClosedLoop = false;
+// lift control mode flag
+LiftMode Robot::liftMode = LiftMode::Disabled;
 
+// hatch ejection system status flag
+HatchEjectMode Robot::hatchMode = HatchEjectMode::PortNotInRange;
 
 ////////////////////////////////////////
 // Methods
