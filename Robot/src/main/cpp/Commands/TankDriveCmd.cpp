@@ -32,7 +32,7 @@ void TankDriveCmd::Initialize()
 	Robot::hatchMode = HatchEjectMode::PortNotInRange;
 
     driveSubSystem->SetSetpointRelative(0.0);
-    driveSubSystem->Enable();              // starts PID controller
+//    driveSubSystem->Enable();              // starts PID controller
 	printf("Tank drive command initialized\n");
 }
 
@@ -142,6 +142,7 @@ void TankDriveCmd::CheckVisionSystem()
 		{
 			// reset the setpoint and set mode to eject the hatch
 			this->driveSubSystem->SetSetpointRelative(0.0);
+			this->driveSubSystem->Disable();	// disable PID controller
 			Robot::hatchMode =  HatchEjectMode::EjectingHatch;
 		}
 
@@ -155,6 +156,8 @@ void TankDriveCmd::CheckVisionSystem()
             Robot::hatchMode != HatchEjectMode::EjectingHatch)
         {
 			this->controllerState->ForceButtonState(BUTTON_X, false);	// reset
+			this->driveSubSystem->Enable();              // starts PID controller
+
             Robot::hatchMode == HatchEjectMode::AligningWithPort;
 
 			// set initial setpoint to tx angle from limelight

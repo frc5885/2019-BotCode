@@ -46,8 +46,8 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     // set the peak and nominal outputs, +-1 means full
     this->liftMotor5->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor5->ConfigNominalOutputReverse(0, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputForward(.6, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputReverse(-.6, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputForward(.3, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputReverse(-.3, kTimeoutMs);
 
     this->liftMotor7->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor7->ConfigNominalOutputReverse(0, kTimeoutMs);
@@ -72,7 +72,7 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     this->leftJoystickY = 0.0;
     this->rightJoystickY = 0.0;
     this->targetHeight = 10.0;      /// set this to experimentally determined target height!!!
-    this->logOutput = false;
+    this->logOutput = true;
     this->logStrLoops = 0;
     this->logStrDelay = 10;
 }
@@ -145,8 +145,10 @@ void LiftSubSystem::RunOpenLoop()
         return;
     }
 
-     this->liftMotor5->Set(ControlMode::PercentOutput, this->frontMotorSpeed);
-     this->liftMotor7->Set(ControlMode::PercentOutput, this->rearMotorSpeed);
+     this->liftMotor5->Set(ControlMode::PercentOutput, this->rearMotorSpeed);
+     this->liftMotor6->Set(ControlMode::Follower, 5);
+
+     this->liftMotor7->Set(ControlMode::PercentOutput, this->frontMotorSpeed);
 }
 
 void LiftSubSystem::RunClosedLoop()
@@ -158,7 +160,7 @@ void LiftSubSystem::RunClosedLoop()
 
     // move the rear lift (talon5) at a speed based on joystick position
     this->liftMotor5->Set(ControlMode::PercentOutput, this->leftJoystickY);
-
+    this->liftMotor6->Set(ControlMode::Follower, 5);
     // set the target for talon7 to the current position of talon5
     int targetPosition = this->liftMotor5->GetSelectedSensorPosition(kPIDLoopIdx);
     this->liftMotor7->Set(ControlMode::Position, targetPosition);
@@ -174,9 +176,11 @@ void LiftSubSystem::RunAutoLevel()
         return;
     }
 
+    printf("auto level!!!\n");
+
     // drive rear lift to target height
     int targetPosition = (int)((double)(this->targetHeight * kCountsPerInch));
-    this->liftMotor5->Set(ControlMode::Position, this->targetHeight);
+    this->liftMotor5->Set(ControlMode::Position, targetPosition);
 
     // set the target for talon7 to the current position of talon5
     targetPosition = this->liftMotor5->GetSelectedSensorPosition(kPIDLoopIdx);

@@ -35,12 +35,18 @@ void LiftCmd::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LiftCmd::Execute()
 {
+    if (this->controllerState->m_controller.GetTopPressed())
+    {
+        printf("Sensors zeroed\n");
+        this->liftSubSystem->ZeroSensors();
+    }
+
     if (this->controllerState->m_controller.GetRawButton(BUMPER_LEFT))
     {
         // set closed loop mode for talons 5 & 7 (level lifting of robot)
         this->ClosedLoopExecute();
     }
-    else if (this->controllerState->m_controller.GetRawButton(BUMPER_RIGHT))
+    else if (this->controllerState->GetRightTrig() > .5)
     {
         // set 'auto' mode
         this->AutoExecute();
@@ -75,10 +81,10 @@ void LiftCmd::Interrupted()
 void  LiftCmd::OpenLoopExecute()
 {
     // rear motor speed from left joystick
-    float rearMotorSpeed = controllerState->GetLeftY() * .5;
+    float rearMotorSpeed = -controllerState->GetRightY() * .5;
 
     // weaker front motor speed is linear with right joystick
-    float frontMotorSpeed = controllerState->GetRightY();
+    float frontMotorSpeed = controllerState->GetLeftY();
 
     // pass motor speeds to subsystem
     this->liftSubSystem->SetRearMotorSpeed(rearMotorSpeed);

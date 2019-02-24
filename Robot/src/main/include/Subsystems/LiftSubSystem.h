@@ -35,7 +35,7 @@ enum Constants
 	kTimeoutMs = 30,
 
 	// encoder counts per inch of rack movement
-	kCountsPerInch = 17013
+	kCountsPerInch = 73015
 };
 
 /**
