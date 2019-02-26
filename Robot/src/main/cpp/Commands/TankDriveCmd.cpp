@@ -32,7 +32,6 @@ void TankDriveCmd::Initialize()
 	Robot::hatchMode = HatchEjectMode::PortNotInRange;
 
     driveSubSystem->SetSetpointRelative(0.0);
-//    driveSubSystem->Enable();              // starts PID controller
 	printf("Tank drive command initialized\n");
 }
 
@@ -131,6 +130,19 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 
 void TankDriveCmd::CheckVisionSystem()
 {
+	// if the driver determined that the PID control loop is not working
+	// they can move a joystick to disable the 'auto' mode using the code below
+	if (Robot::hatchMode == HatchEjectMode::AligningWithPort &&
+		(std::abs(this->controllerState->GetLeftTrig() > .25) || 
+		 std::abs(this->controllerState->GetRightTrig() > .25)))
+	{
+		// reset setpoint and disable the controller
+		this->driveSubSystem->SetSetpointRelative(0.0);
+		this->driveSubSystem->Disable();	// disable PID controller
+		Robot::hatchMode = HatchEjectMode::PortNotInRange;
+		return;
+	}
+
     // get horizontal angle to target
     double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
 
@@ -143,7 +155,7 @@ void TankDriveCmd::CheckVisionSystem()
 			// reset the setpoint and set mode to eject the hatch
 			this->driveSubSystem->SetSetpointRelative(0.0);
 			this->driveSubSystem->Disable();	// disable PID controller
-			Robot::hatchMode =  HatchEjectMode::EjectingHatch;
+			Robot::hatchMode = HatchEjectMode::EjectingHatch;
 		}
 
         // a port is in range to apply closed loop positioning

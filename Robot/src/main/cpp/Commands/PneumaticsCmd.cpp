@@ -56,7 +56,7 @@ void PneumaticsCmd::Execute()
 		// user released right bumper and reversed the solenoid
 		Robot::hatchSubSystem->EjectorOff();
 	}
-	else if (controllerState->GetRightBumper())
+	else if (controllerState->m_controller.GetRawButton(BUMPER_RIGHT))
 	{
 		// driver pressed right bumper and solenoid is off
 		Robot::hatchSubSystem->EjectorForward();

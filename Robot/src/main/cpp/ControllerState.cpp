@@ -111,7 +111,7 @@ void ControllerState::GetState()
 	m_rightY = m_controller.GetRawAxis(JOYSTICK_RIGHT_Y)*(-1); //Right joystick
 	m_rightX = m_controller.GetRawAxis(JOYSTICK_RIGHT_X)*(-1); //Right joystick
 	m_rightJoystickButton.ToggleState(m_controller.GetRawButton(JOYSTICK_RIGHT_BUTTON));//Right joystick button
-	m_rightBumper.ForceState(m_controller.GetRawButton(BUMPER_RIGHT));
+	m_rightBumper.ToggleState(m_controller.GetRawButton(BUMPER_RIGHT));
 	m_leftBumper.ToggleState(m_controller.GetRawButton(BUMPER_LEFT)); // Left Bumper
 	m_buttonA.ToggleState(m_controller.GetRawButton(BUTTON_A)); //Button A
 	m_buttonB.ToggleState(m_controller.GetRawButton(BUTTON_B));//Button B

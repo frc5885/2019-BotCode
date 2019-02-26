@@ -43,7 +43,8 @@ enum Constants
  *
  * @author ExampleAuthor
  */
-class LiftSubSystem: public frc::Subsystem {
+class LiftSubSystem: public frc::Subsystem 
+{
 private:
 	// It's desirable that everything possible is private except
 	// for methods that implement subsystem capabilities
@@ -68,10 +69,10 @@ private:
     double leftJoystickY, rightJoystickY;    // left,right joystick Y positions 
     bool logOutput;         // log closed loop output
     std::string logStr;     // string for logged output
-    int logStrLoops;        // loop countr for logged strings
+    int logStrLoops;        // loop counter for logged strings
     int logStrDelay;        // delay in output for logged strings
 	double targetHeight;	// height to lift robot for habitat
-
+	double heightOffset;	// constant height offset between front and rear racks
 // Methods
 public:
     void ZeroSensors();

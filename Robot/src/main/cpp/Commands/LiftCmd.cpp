@@ -35,10 +35,11 @@ void LiftCmd::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LiftCmd::Execute()
 {
-    if (this->controllerState->m_controller.GetTopPressed())
+    if (this->controllerState->GetButtonY())
     {
         printf("Sensors zeroed\n");
         this->liftSubSystem->ZeroSensors();
+        this->controllerState->ForceButtonState(BUTTON_Y, false);
     }
 
     if (this->controllerState->m_controller.GetRawButton(BUMPER_LEFT))

@@ -46,8 +46,8 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     // set the peak and nominal outputs, +-1 means full
     this->liftMotor5->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor5->ConfigNominalOutputReverse(0, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputForward(.3, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputReverse(-.3, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputForward(1.0, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputReverse(-1.0, kTimeoutMs);
 
     this->liftMotor7->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor7->ConfigNominalOutputReverse(0, kTimeoutMs);
@@ -71,7 +71,8 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     this->rearMotorSpeed = 0.0;
     this->leftJoystickY = 0.0;
     this->rightJoystickY = 0.0;
-    this->targetHeight = 10.0;      /// set this to experimentally determined target height!!!
+    this->targetHeight = 10.0;      // set this to experimentally determined target height!!!
+    this->heightOffset = 0.25;      // height offset between front & rear racks when 'level'
     this->logOutput = true;
     this->logStrLoops = 0;
     this->logStrDelay = 10;
@@ -158,12 +159,17 @@ void LiftSubSystem::RunClosedLoop()
         return;
     }
 
-    // move the rear lift (talon5) at a speed based on joystick position
-    this->liftMotor5->Set(ControlMode::PercentOutput, this->leftJoystickY);
+    // move the front lift (talon7) at a speed based on joystick position
+    this->liftMotor7->Set(ControlMode::PercentOutput, this->leftJoystickY);
+
+    // set the target for talon5 to the current position of talon7
+    int targetPosition = this->liftMotor7->GetSelectedSensorPosition(kPIDLoopIdx) -
+        (int)(this->heightOffset * kCountsPerInch);
+        
+    this->liftMotor5->Set(ControlMode::Position, targetPosition);
+
+    // talon6 follows talon5
     this->liftMotor6->Set(ControlMode::Follower, 5);
-    // set the target for talon7 to the current position of talon5
-    int targetPosition = this->liftMotor5->GetSelectedSensorPosition(kPIDLoopIdx);
-    this->liftMotor7->Set(ControlMode::Position, targetPosition);
 
     // print output, if required
     PrintOutput(targetPosition);
