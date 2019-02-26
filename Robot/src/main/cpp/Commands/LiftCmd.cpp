@@ -46,11 +46,11 @@ void LiftCmd::Execute()
         // set closed loop mode for talons 5 & 7 (level lifting of robot)
         this->ClosedLoopExecute();
     }
-    else if (this->controllerState->GetRightTrig() > .5)
-    {
-        // set 'auto' mode
-        this->AutoExecute();
-    }
+    // else if (this->controllerState->GetRightTrig() > .5)
+    // {
+    //     // set 'auto' mode
+    //     this->AutoExecute();
+    // }
     else
     { 
         // set open loop mode for talons 5 & 7 (front & rear lift are separate)
