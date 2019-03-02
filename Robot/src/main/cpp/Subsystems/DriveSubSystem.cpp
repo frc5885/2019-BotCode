@@ -33,8 +33,6 @@ DriveSubSystem::DriveSubSystem() : frc::PIDSubsystem("DriveSubSystem", .04, 0.0,
     this->rightSpeed = 0.0;
 
     this->SetAbsoluteTolerance(0.2);
-    rightFront->SetInverted(true);
-    rightRear->SetInverted(true);
 
     printf("Drive sub-system initialized\n");
 }
@@ -56,9 +54,9 @@ void DriveSubSystem::Periodic()
     {
         // drive the wheels based on the joysticks - tank drive mode
         this->leftFront->Set(ControlMode::PercentOutput, this->leftSpeed);
-        this->rightFront->Set(ControlMode::PercentOutput, -this->rightSpeed);
+        this->rightFront->Set(ControlMode::PercentOutput, this->rightSpeed);
         this->leftRear->Set(ControlMode::PercentOutput, this->leftSpeed);
-        this->rightRear->Set(ControlMode::PercentOutput, -this->rightSpeed);
+        this->rightRear->Set(ControlMode::PercentOutput, this->rightSpeed);
     }
     else if (Robot::hatchMode == HatchEjectMode::AligningWithPort)
     {

@@ -88,12 +88,21 @@ void Robot::DisabledPeriodic()
 
 void Robot::AutonomousInit() 
 {
-	
+	// 'un-press' all buttons - button states are saved from last teleop run
+	// unless the robot is disconnected from drive station
+	this->controllerState1->InitializeButtonStates();
+	this->controllerState2->InitializeButtonStates();
+
+	// add the teleop commands to the scheduler and start the loop
+    this->teleop.reset(new(Teleop));
+    this->teleop->Start();
 }
 
 void Robot::AutonomousPeriodic() 
 {
-//	frc::Scheduler::GetInstance()->Run();
+    this->controllerState1->GetState();
+    this->controllerState2->GetState();
+	frc::Scheduler::GetInstance()->Run();
 }
 
 void Robot::TeleopInit() 
@@ -106,12 +115,12 @@ void Robot::TeleopInit()
 
 	// 'un-press' all buttons - button states are saved from last teleop run
 	// unless the robot is disconnected from drive station
-	this->controllerState1->InitializeButtonStates();
-	this->controllerState2->InitializeButtonStates();
+	// this->controllerState1->InitializeButtonStates();
+	// this->controllerState2->InitializeButtonStates();
 
 	// add the teleop commands to the scheduler and start the loop
-    this->teleop.reset(new(Teleop));
-    this->teleop->Start();
+    // this->teleop.reset(new(Teleop));
+    // this->teleop->Start();
  }
 
 void Robot::TeleopPeriodic() 

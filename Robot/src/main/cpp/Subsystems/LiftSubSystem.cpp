@@ -56,7 +56,7 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
 
     // set closed loop gains in slot0
     this->liftMotor5->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
-    this->liftMotor5->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+    this->liftMotor5->Config_kP(kPIDLoopIdx, 0.05, kTimeoutMs);
     this->liftMotor5->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
     this->liftMotor5->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
@@ -71,8 +71,14 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     this->rearMotorSpeed = 0.0;
     this->leftJoystickY = 0.0;
     this->rightJoystickY = 0.0;
-    this->targetHeight = 10.0;      // set this to experimentally determined target height!!!
-    this->heightOffset = 0.25;      // height offset between front & rear racks when 'level'
+
+    // set this to experimentally determined target height!!!
+    // not implemented currently
+    this->targetHeight = 10.0;  
+
+    // height offset between front & rear racks when 'level'
+    // +ive puts the rear higher than the front, -ive puts it lower
+    this->heightOffset = -0.25;
     this->logOutput = true;
     this->logStrLoops = 0;
     this->logStrDelay = 10;

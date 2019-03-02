@@ -85,7 +85,7 @@ void TankDriveCmd::Execute()
 
     this->driveSubSystem->SetLeftSpeed((double)leftY);
     this->driveSubSystem->SetRightSpeed((double)rightY);
-    this->driveSubSystem->Periodic();
+//    this->driveSubSystem->Periodic();
 }
 
 // Make this return true when this Command no longer needs to run execute()
