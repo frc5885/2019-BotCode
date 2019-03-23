@@ -1,4 +1,4 @@
-See file:///E:/FRC/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
+See file:///C:/Users/5885/Documents/DeepSpace2019/src/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
 linking frcUserProgram successful.
 
-Finished linkFrcUserProgramReleaseExecutable, see full log file:///E:/FRC/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.
+Finished linkFrcUserProgramReleaseExecutable, see full log file:///C:/Users/5885/Documents/DeepSpace2019/src/2019-BotCode/Pixel/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.

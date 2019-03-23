@@ -1,4 +1,4 @@
-See file:///E:/FRC/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+See file:///C:/Users/5885/Documents/DeepSpace2019/src/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
 compiling ButtonState.cpp successful.
 
 compiling ControllerState.cpp successful.
@@ -15,4 +15,4 @@ compiling Robot.cpp successful.
 
 compiling DriveSubSystem.cpp successful.
 
-Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///E:/FRC/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
+Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/5885/Documents/DeepSpace2019/src/2019-BotCode/Pixel/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
