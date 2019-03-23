@@ -48,24 +48,26 @@ void DriveSubSystem::InitDefaultCommand() {
 
 void DriveSubSystem::Periodic() 
 {
-    // if we are manually driving the robot...
-    if (Robot::hatchMode == HatchEjectMode::PortNotInRange || 
-        Robot::hatchMode == HatchEjectMode::PortInRange)
-    {
+    // // if we are manually driving the robot...
+    // if (Robot::hatchMode == HatchEjectMode::PortNotInRange || 
+    //     Robot::hatchMode == HatchEjectMode::PortInRange)
+    // {
+
         // drive the wheels based on the joysticks - tank drive mode
         this->leftFront->Set(ControlMode::PercentOutput, this->leftSpeed);
         this->rightFront->Set(ControlMode::PercentOutput, this->rightSpeed);
         this->leftRear->Set(ControlMode::PercentOutput, this->leftSpeed);
         this->rightRear->Set(ControlMode::PercentOutput, this->rightSpeed);
-    }
-    else if (Robot::hatchMode == HatchEjectMode::AligningWithPort)
-    {
-        // slave the right front and rear wheels to the left front, which
-        // is being controlled via a PID controller using the camera as input
-        this->rightFront->Set(ControlMode::Follower, 4);
-        this->leftRear->Set(ControlMode::Follower, 4);
-        this->rightRear->Set(ControlMode::Follower, 4);
-    }
+
+    // }
+    // else if (Robot::hatchMode == HatchEjectMode::AligningWithPort)
+    // {
+    //     // slave the right front and rear wheels to the left front, which
+    //     // is being controlled via a PID controller using the camera as input
+    //     this->rightFront->Set(ControlMode::Follower, 4);
+    //     this->leftRear->Set(ControlMode::Follower, 4);
+    //     this->rightRear->Set(ControlMode::Follower, 4);
+    // }
 }
 
 double DriveSubSystem::ReturnPIDInput()

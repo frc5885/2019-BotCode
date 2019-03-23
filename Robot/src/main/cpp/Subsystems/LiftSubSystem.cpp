@@ -51,8 +51,8 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
 
     this->liftMotor7->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor7->ConfigNominalOutputReverse(0, kTimeoutMs);
-    this->liftMotor7->ConfigPeakOutputForward(0.7, kTimeoutMs);
-    this->liftMotor7->ConfigPeakOutputReverse(-0.7, kTimeoutMs);
+    this->liftMotor7->ConfigPeakOutputForward(1.0, kTimeoutMs);
+    this->liftMotor7->ConfigPeakOutputReverse(-1.0, kTimeoutMs);
 
     // set closed loop gains in slot0
     this->liftMotor5->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);

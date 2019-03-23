@@ -16,7 +16,10 @@
 #include "frc/commands/Command.h"
 #include "frc/livewindow/LiveWindow.h"
 
-// General enums
+// General constants and enums
+
+// Conversion of degrees to radians
+const double degreeToRadian = 0.0174532925;
 
 // current mode for the robot lift system
 enum LiftMode

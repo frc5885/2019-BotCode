@@ -30,6 +30,7 @@ void TankDriveCmd::Initialize()
     controllerState = Robot::controllerState1.get();
 	SetSpeedScale(1.0);	//TODO program in control system!!!
 	Robot::hatchMode = HatchEjectMode::PortNotInRange;
+	this->inAutoAlign = false;
 
     driveSubSystem->SetSetpointRelative(0.0);
 	printf("Tank drive command initialized\n");
@@ -38,7 +39,13 @@ void TankDriveCmd::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TankDriveCmd::Execute()
 {
-	CheckVisionSystem();
+	//CheckVisionSystem();
+	AutoAlignFromLimelight();
+
+	if (this->inAutoAlign)
+	{
+		return; // we are lining up to pickup or place a hatch
+	}
 
 	if (Robot::hatchMode == HatchEjectMode::AligningWithPort ||
 		Robot::hatchMode == HatchEjectMode::EjectingHatch)
@@ -85,7 +92,6 @@ void TankDriveCmd::Execute()
 
     this->driveSubSystem->SetLeftSpeed((double)leftY);
     this->driveSubSystem->SetRightSpeed((double)rightY);
-//    this->driveSubSystem->Periodic();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -186,4 +192,85 @@ void TankDriveCmd::CheckVisionSystem()
         Robot::controllerState1->m_controller.SetRumble(
             frc::GenericHID::RumbleType::kLeftRumble, 0.0);
     }
+}
+
+void TankDriveCmd::AutoAlignFromLimelight()
+{
+	// bail if controller isn't in auto-align mode...
+	if (!Robot::controllerState1->m_controller.GetRawButton(BUTTON_A))
+	{
+		// Turn off rumble
+        Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
+
+		if (this->inAutoAlign)
+		{
+			// we are at the target, turn off the motors
+			this->driveSubSystem->SetLeftSpeed(0.0);
+    		this->driveSubSystem->SetRightSpeed(0.0);
+		}
+
+		this->inAutoAlign = false;
+		return;
+	}
+
+	// bail if we are not close to a target...
+	if (Robot::visionNetworkTable->GetNumber("tv", 0.0)  != 1.0)
+	{
+	 	// Turn off rumble
+        Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
+
+		if (this->inAutoAlign)
+		{
+			// we are out of range, turn off the motors
+			this->driveSubSystem->SetLeftSpeed(0.0);
+    		this->driveSubSystem->SetRightSpeed(0.0);
+		}
+
+		this->inAutoAlign = false;
+		return;
+	}
+
+    // get horizontal angle to target
+    double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
+
+	double leftSpeed = -Robot::controllerState1->GetLeftY() * 0.40; 
+	double rightSpeed = leftSpeed;
+	double cosAngle = cos(degreeToRadian * tx); 
+	
+	if (!Equals(tx, 0.0, this->angleTolerance))
+	{
+		if (tx > 0.0)
+		{
+			// turn right
+			rightSpeed = leftSpeed - (autoAlignGain * (1.0 - cosAngle));
+		}
+		else
+		{
+			// turn left, if the initial angle is less than 90 degrees
+			rightSpeed = leftSpeed  + (autoAlignGain * (1.0 - cosAngle));
+		}
+	}
+
+	if (rightSpeed > 1.0)
+	{
+		rightSpeed = 1.0;
+	}
+
+	if (rightSpeed < 0.0)
+	{
+		rightSpeed = 0.0;
+	}
+
+	// output for debugging
+	// printf("tx = %6.5f  leftSpeed = %4.3f rightSpeed = %4.3f\n",
+	//  tx, leftSpeed, rightSpeed);
+	 
+	this->driveSubSystem->SetLeftSpeed(leftSpeed);
+    this->driveSubSystem->SetRightSpeed(-rightSpeed);
+	this->driveSubSystem->Periodic();
+	// rumble the controller for the operator
+    Robot::controllerState1->m_controller.SetRumble(
+    	frc::GenericHID::RumbleType::kLeftRumble, .9);
 }
