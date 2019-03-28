@@ -24,8 +24,13 @@ LightCmd::LightCmd(): frc::Command() {
 
 // Called just before this Command runs the first time
 void LightCmd::Initialize() {
-    
+
 }
+
+
+//http://first.wpi.edu/FRC/roborio/release/docs/cpp/group__hal__dio.html
+
+
 
 // Called repeatedly when this Command is scheduled to run
 void LightCmd::Execute() {
