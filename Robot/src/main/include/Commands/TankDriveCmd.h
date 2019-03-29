@@ -44,16 +44,20 @@ private:
 // Constants
 	// Gain Value for aligning robot with target while driving forward  
 	const double autoAlignGain = 10.0;
+	const double parallelGain = .005;
 
 	// Auto alignment angle tolerance
 	const double angleTolerance = 1.0;
 
 // Properties
+public:
+	static bool autoAlignParallel;
+
 private:
     DriveSubSystem* driveSubSystem;
     ControllerState* controllerState;
 	double motorSpeedScale;	// 0 = motors won't run, 1 = full blast
-	bool inAutoAlign;
+	bool autoAlignPerpendicular;
 
 // Methods
 public:
@@ -68,7 +72,8 @@ public:
 private:
     double SmoothDriveCurve(double joystickYPosition) const;
 	void CheckVisionSystem();
-	void AutoAlignFromLimelight();
+	void AutoAlignPerpendicularFromLimelight();
+	void AutoAlignParallelFromLimelight();
 };
 
 #endif

@@ -57,6 +57,16 @@ void LiftCmd::Execute()
         // set open loop mode for talons 5 & 7 (front & rear lift are separate)
         this->OpenLoopExecute();
     }
+
+    // stabilizer foot command
+   	if (this->controllerState->GetRightBumper())
+   	{
+       	Robot::liftSubSystem->ExtendStabilizer();
+   	}
+   	else
+   	{
+       	Robot::liftSubSystem->RetractStabilizer();
+   	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
