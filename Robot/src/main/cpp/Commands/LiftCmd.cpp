@@ -47,11 +47,6 @@ void LiftCmd::Execute()
         // set closed loop mode for talons 5 & 7 (level lifting of robot)
         this->ClosedLoopExecute();
     }
-    // else if (this->controllerState->GetRightTrig() > .5)
-    // {
-    //     // set 'auto' mode
-    //     this->AutoExecute();
-    // }
     else
     { 
         // set open loop mode for talons 5 & 7 (front & rear lift are separate)
@@ -92,7 +87,7 @@ void LiftCmd::Interrupted()
 void  LiftCmd::OpenLoopExecute()
 {
     // rear motor speed from left joystick
-    float rearMotorSpeed = -controllerState->GetRightY() * .5;
+    float rearMotorSpeed = -controllerState->GetRightY();
 
     // weaker front motor speed is linear with right joystick
     float frontMotorSpeed = controllerState->GetLeftY();
@@ -112,15 +107,4 @@ void LiftCmd::ClosedLoopExecute()
 
     // put the drive subsystem into manual closed loop level lift mode
     Robot::liftMode = LiftMode::Level;
-}
-
-void LiftCmd::AutoExecute()
-{
-    // if we aren't already retracting the front lift...
-    if (Robot::liftMode != LiftMode::RetractFront)
-    {
-        // put the drive subsystem into auto closed loop level lift mode
-        // this mode will automatically change to retract the front lift when finished
-        Robot::liftMode = LiftMode::AutoLevel;
-    }
 }

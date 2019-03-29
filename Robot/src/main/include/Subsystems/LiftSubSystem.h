@@ -127,8 +127,6 @@ public:
 private:
 	void RunOpenLoop();
     void RunClosedLoop();
-	void RunAutoLevel();
-	void RunRetractFrontLift();
 	void PrintOutput(int tgtPos);
 };
 

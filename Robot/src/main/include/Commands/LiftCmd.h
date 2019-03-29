@@ -53,9 +53,6 @@ private:
 
 	// Run Talon's 6 & 7 from left joystick & keep Talon 7 in sync via PID
 	void ClosedLoopExecute();
-
-	// Run in 'auto' mode
-	void AutoExecute();
 };
 
 #endif

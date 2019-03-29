@@ -99,31 +99,18 @@ void LiftSubSystem::InitDefaultCommand() {
 
 void LiftSubSystem::Periodic()
 {
-    switch (Robot::liftMode)
+    if (Robot::liftMode == LiftMode::Level)
     {
-    case LiftMode::Manual:
-        // drive front & rear lifts independently
-        this->RunOpenLoop();
-        break;
-
-    case LiftMode::Level:
         // drive all 3 talons, keeping the robot level using left joystick
         // operator drives rear lift, front lift follows
+        printf("Level lift\n");
         this->RunClosedLoop();
-        break;
-
-    case LiftMode::AutoLevel:
-        // drive all 3 talons to a target height, keeping the robot level using left joystick
-        this->RunAutoLevel();
-        break;
- 
-    case LiftMode::RetractFront:
-        // retract the front lift prior to driving on the platform
-        this->RunRetractFrontLift();
-        break;
-
-    default:
-        break;
+    }
+    else
+    {
+        // drive front & rear lifts independently
+        printf("Manual lift\n");
+        this->RunOpenLoop();
     }
 }
 
@@ -183,51 +170,6 @@ void LiftSubSystem::RunClosedLoop()
 
     // print output, if required
     PrintOutput(targetPosition);
-}
-
-void LiftSubSystem::RunAutoLevel()
-{
-    if (Robot::liftMode != LiftMode::AutoLevel)
-    {
-        return;
-    }
-
-    printf("auto level!!!\n");
-
-    // drive rear lift to target height
-    int targetPosition = (int)((double)(this->targetHeight * kCountsPerInch));
-    this->liftMotor5->Set(ControlMode::Position, targetPosition);
-
-    // set the target for talon7 to the current position of talon5
-    targetPosition = this->liftMotor5->GetSelectedSensorPosition(kPIDLoopIdx);
-    this->liftMotor7->Set(ControlMode::Position, targetPosition);
-
-    // if we are at the target height, change mode to retract front lift
-    if (std::abs(this->liftMotor7->GetClosedLoopError(kPIDLoopIdx)) < 10)
-    {
-        Robot::liftMode = LiftMode::RetractFront;
-    }
-
-    // Print the output, if required
-    PrintOutput(targetPosition);
-}
-
-void LiftSubSystem::RunRetractFrontLift()
-{
-     if (Robot::liftMode != LiftMode::RetractFront)
-    {
-        return;
-    }
-
-    // hold rear lift at target height
-    int targetPosition = (int)((double)(this->targetHeight * kCountsPerInch));
-    this->liftMotor5->Set(ControlMode::Position, this->targetHeight);
-
-    // set the target for talon7 to 0 to retract it
-    this->liftMotor7->Set(ControlMode::Position, 0);
-
-    // Print the output, if required
-    PrintOutput(0);
 }
 
 void LiftSubSystem::PrintOutput(int tgtPos)
