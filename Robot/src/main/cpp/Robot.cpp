@@ -139,6 +139,12 @@ void Robot::TeleopPeriodic()
 	frc::Scheduler::GetInstance()->Run();
 }
 
+void Robot::TestPeriodic()
+{
+	printf("ta = %4.3f\n", Robot::visionNetworkTable->GetNumber("ta", 0.0));
+}
+
+////////////////////////////////////////////////////////////////
 #ifndef RUNNING_FRC_TESTS
 int main(int argc, char** argv)
 {

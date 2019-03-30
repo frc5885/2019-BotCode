@@ -37,6 +37,10 @@ void TankDriveCmd::Initialize()
 	this->autoAlignPerpendicular = false;
 	this->autoAlignParallel = false;
 
+	this->tx = 0;
+	this->ta = 0;
+	this->tv = 0;
+
 	// enable the software PID controller
 	printf("Tank drive command initialized\n");
 }
@@ -44,8 +48,30 @@ void TankDriveCmd::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void TankDriveCmd::Execute()
 {
-	AutoAlignParallelFromLimelight();
-	AutoAlignPerpendicularFromLimelight();
+	// get vision parameters for closed loop control
+	this->tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
+	this->tv = Robot::visionNetworkTable->GetNumber("tv", 0.0);
+	this->ta = Robot::visionNetworkTable->GetNumber("ta", 0.0);
+
+	// if we have a target in sight...
+	if (this->tv == 1.0)
+	{
+		// rumble the controller to alert the driver that we're close...
+		double rumble = (std::abs(this->tx) < this->angleTolerance) ? .5 : .9;
+		Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, rumble);
+
+		// auto alignment driver assist
+		AutoAlignParallelFromLimelight();
+		AutoAlignPerpendicularFromLimelight();
+	}
+	else
+	{
+		// turn off the controller rumble
+		Robot::controllerState1->m_controller.SetRumble(
+            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
+	}
+	
 
 	if (this->autoAlignPerpendicular)
 	{
@@ -141,66 +167,6 @@ double TankDriveCmd::SmoothDriveCurve(double joystickYPosition) const
 	return fabs(motorSpeed * this->motorSpeedScale);
 }
 
-void TankDriveCmd::CheckVisionSystem()
-{
-	// if the driver determined that the PID control loop is not working
-	// they can move a joystick to disable the 'auto' mode using the code below
-	if (Robot::hatchMode == HatchEjectMode::AligningWithPort &&
-		(std::abs(this->controllerState->GetLeftTrig() > .25) || 
-		 std::abs(this->controllerState->GetRightTrig() > .25)))
-	{
-		// reset setpoint and disable the controller
-		this->driveSubSystem->SetSetpointRelative(0.0);
-		this->driveSubSystem->Disable();	// disable PID controller
-		Robot::hatchMode = HatchEjectMode::PortNotInRange;
-		return;
-	}
-
-    // get horizontal angle to target
-    double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
-
-    // if we are close to a port...
-    if (Robot::visionNetworkTable->GetNumber("tv", 0.0) == 1.0 && std::abs(tx) < 5.0)
-    {
-		if (Robot::hatchMode == HatchEjectMode::AligningWithPort &&
-			this->driveSubSystem->OnTarget())
-		{
-			// reset the setpoint and set mode to eject the hatch
-			this->driveSubSystem->SetSetpointRelative(0.0);
-			this->driveSubSystem->Disable();	// disable PID controller
-			Robot::hatchMode = HatchEjectMode::EjectingHatch;
-		}
-
-        // a port is in range to apply closed loop positioning
-        if (Robot::hatchMode == HatchEjectMode::PortNotInRange)
-        {
-            Robot::hatchMode = HatchEjectMode::PortInRange;
-        }
-
-        else if (this->controllerState->GetButtonX() &&
-            Robot::hatchMode != HatchEjectMode::EjectingHatch)
-        {
-			this->controllerState->ForceButtonState(BUTTON_X, false);	// reset
-			this->driveSubSystem->Enable();              // starts PID controller
-
-            Robot::hatchMode == HatchEjectMode::AligningWithPort;
-
-			// set initial setpoint to tx angle from limelight
-        	this->driveSubSystem->SetSetpointRelative(tx);
-        }
-
-        // rumble the controller for the operator
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, .9);
-    }
-    else
-    {
-        Robot::hatchMode = HatchEjectMode::PortNotInRange;
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
-    }
-}
-
 void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 {
 	// bail if controller is in parallel auto-align mode...
@@ -212,13 +178,9 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	// bail if controller isn't in perpendicular auto-align mode...
 	if (!Robot::controllerState1->m_controller.GetRawButton(BUTTON_A))
 	{
-		// Turn off rumble
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
-
 		if (this->autoAlignPerpendicular)
 		{
-			// we are at the target, turn off the motors
+			// we are at the target, turn off the motors and increase the rumble
 			this->driveSubSystem->SetLeftSpeed(0.0);
     		this->driveSubSystem->SetRightSpeed(0.0);
 		}
@@ -228,12 +190,8 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	}
 
 	// bail if we are not close to a target...
-	if (Robot::visionNetworkTable->GetNumber("tv", 0.0)  != 1.0)
+	if (this->tv  != 1.0)
 	{
-	 	// Turn off rumble
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
-
 		if (this->autoAlignPerpendicular)
 		{
 			// we are out of range, turn off the motors
@@ -245,15 +203,13 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	}
 
     // get horizontal angle to target
-    double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
-
-	double leftSpeed = -Robot::controllerState1->GetLeftY() * 0.40; 
+ 	double leftSpeed = -Robot::controllerState1->GetLeftY() * 0.40; 
 	double rightSpeed = leftSpeed;
-	double cosAngle = cos(degreeToRadian * tx); 
+	double cosAngle = cos(degreeToRadian * this->tx); 
 	
-	if (!Equals(tx, 0.0, this->angleTolerance))
+	if (!Equals(std::abs(this->tx), 0.0, this->angleTolerance))
 	{
-		if (tx > 0.0)
+		if (this->tx > 0.0)
 		{
 			// turn right
 			rightSpeed = leftSpeed - (autoAlignGain * (1.0 - cosAngle));
@@ -276,16 +232,12 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	}
 
 	// output for debugging
-	// printf("tx = %6.5f  leftSpeed = %4.3f rightSpeed = %4.3f\n",
+	// printf("tx = %4.3f  leftSpeed = %4.3f rightSpeed = %4.3f\n",
 	//  tx, leftSpeed, rightSpeed);
 	 
 	this->driveSubSystem->SetLeftSpeed(leftSpeed);
     this->driveSubSystem->SetRightSpeed(-rightSpeed);
 	this->driveSubSystem->Periodic();
-
-	// rumble the controller for the operator
-    Robot::controllerState1->m_controller.SetRumble(
-    	frc::GenericHID::RumbleType::kLeftRumble, .9);
 }
 
 void TankDriveCmd::AutoAlignParallelFromLimelight()
@@ -299,14 +251,11 @@ void TankDriveCmd::AutoAlignParallelFromLimelight()
 	// bail if controller isn't in parallel auto-align mode...
 	if (!Robot::controllerState1->m_controller.GetRawButton(BUTTON_Y))
 	{
-		// Turn off rumble
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
-
 		if (this->autoAlignParallel)
 		{
-			// we are at the target, turn off the motors
-			this->driveSubSystem->SetSetpointRelative(0.0);
+			// we are at the target, turn off the motors and increase the rumble
+			this->driveSubSystem->SetLeftSpeed(0.0);
+    		this->driveSubSystem->SetRightSpeed(0.0);
 		}
 
 		this->autoAlignParallel = false;
@@ -314,25 +263,20 @@ void TankDriveCmd::AutoAlignParallelFromLimelight()
 	}
 
 	// bail if we are not close to a target...
-	if (Robot::visionNetworkTable->GetNumber("tv", 0.0)  != 1.0)
+	if (this->tv  != 1.0)
 	{
-	 	// Turn off rumble
-        Robot::controllerState1->m_controller.SetRumble(
-            frc::GenericHID::RumbleType::kLeftRumble, 0.0);
-
 		if (this->autoAlignParallel)
 		{
 			// we are out of range, turn off the motors
 			this->driveSubSystem->SetSetpointRelative(0.0);
 		}	
 
-
 		this->autoAlignParallel = false;
 	}
 
     // get horizontal angle to target, and set motor speed for both sides
-    double tx = Robot::visionNetworkTable->GetNumber("tx", 0.0);
-	double motorSpeed = -tx * this->parallelGain;
+	double sinAngle = sin(degreeToRadian * this->tx); 
+	double motorSpeed = -sinAngle * this->parallelGain;
 
 	if (motorSpeed > 1.0)
 	{
@@ -345,18 +289,10 @@ void TankDriveCmd::AutoAlignParallelFromLimelight()
 	}
 
 	// output for debugging
-	// printf("tx = %6.5f  motorSpeed = %4.3f\n",
+	// printf("tx = %4.3f  motorSpeed = %4.3f\n",
 	//  tx, motorSpeed);
-	 
+
 	this->driveSubSystem->SetLeftSpeed(motorSpeed);
     this->driveSubSystem->SetRightSpeed(-motorSpeed);
 	this->driveSubSystem->Periodic();
-
-	// rumble the controller for the operator
-    Robot::controllerState1->m_controller.SetRumble(
-    	frc::GenericHID::RumbleType::kLeftRumble, .9);
-
-	// rumble the controller for the operator
-    Robot::controllerState1->m_controller.SetRumble(
-    	frc::GenericHID::RumbleType::kLeftRumble, .9);
 }

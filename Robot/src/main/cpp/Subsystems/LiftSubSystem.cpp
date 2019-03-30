@@ -50,22 +50,22 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
     // set the peak and nominal outputs, +-1 means full
     this->liftMotor5->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor5->ConfigNominalOutputReverse(0, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputForward(1.0, kTimeoutMs);
-    this->liftMotor5->ConfigPeakOutputReverse(-1.0, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputForward(.8, kTimeoutMs);
+    this->liftMotor5->ConfigPeakOutputReverse(-.8, kTimeoutMs);
 
     this->liftMotor7->ConfigNominalOutputForward(0, kTimeoutMs);
     this->liftMotor7->ConfigNominalOutputReverse(0, kTimeoutMs);
-    this->liftMotor7->ConfigPeakOutputForward(1.0, kTimeoutMs);
-    this->liftMotor7->ConfigPeakOutputReverse(-1.0, kTimeoutMs);
+    this->liftMotor7->ConfigPeakOutputForward(.8, kTimeoutMs);
+    this->liftMotor7->ConfigPeakOutputReverse(-.8, kTimeoutMs);
 
     // set closed loop gains in slot0
     this->liftMotor5->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
-    this->liftMotor5->Config_kP(kPIDLoopIdx, 0.05, kTimeoutMs);
+    this->liftMotor5->Config_kP(kPIDLoopIdx, 0.15, kTimeoutMs);
     this->liftMotor5->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
     this->liftMotor5->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
     this->liftMotor7->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
-    this->liftMotor7->Config_kP(kPIDLoopIdx, 0.05, kTimeoutMs);
+    this->liftMotor7->Config_kP(kPIDLoopIdx, 0.15, kTimeoutMs);
     this->liftMotor7->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
     this->liftMotor7->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
@@ -82,7 +82,7 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
 
     // height offset between front & rear racks when 'level'
     // +ive puts the rear higher than the front, -ive puts it lower
-    this->heightOffset = -0.25;
+    this->heightOffset = 0.25;
     this->logOutput = false;
     this->logStrLoops = 0;
     this->logStrDelay = 10;
@@ -103,13 +103,11 @@ void LiftSubSystem::Periodic()
     {
         // drive all 3 talons, keeping the robot level using left joystick
         // operator drives rear lift, front lift follows
-        printf("Level lift\n");
         this->RunClosedLoop();
     }
     else
     {
         // drive front & rear lifts independently
-        printf("Manual lift\n");
         this->RunOpenLoop();
     }
 }
