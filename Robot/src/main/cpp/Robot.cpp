@@ -141,7 +141,13 @@ void Robot::TeleopPeriodic()
 
 void Robot::TestPeriodic()
 {
-	printf("ta = %4.3f\n", Robot::visionNetworkTable->GetNumber("ta", 0.0));
+	if (Robot::visionNetworkTable->GetNumber("tv", 0.0) != 1.0)
+	{
+		return;
+	}
+
+	printf("ta = %4.3f  ts = %4.3f   tx = %4.3f\n", Robot::visionNetworkTable->GetNumber("ta", 0.0),
+	Robot::visionNetworkTable->GetNumber("ts", 0.0)), Robot::visionNetworkTable->GetNumber("tx", 0.0);
 }
 
 ////////////////////////////////////////////////////////////////

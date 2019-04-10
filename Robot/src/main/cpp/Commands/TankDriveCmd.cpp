@@ -37,9 +37,11 @@ void TankDriveCmd::Initialize()
 	this->autoAlignPerpendicular = false;
 	this->autoAlignParallel = false;
 
+	// Limelight angle, area, in-range, skew
 	this->tx = 0;
 	this->ta = 0;
 	this->tv = 0;
+	this->ts = 0;
 
 	// enable the software PID controller
 	printf("Tank drive command initialized\n");
@@ -190,7 +192,7 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	}
 
 	// bail if we are not close to a target...
-	if (this->tv  != 1.0)
+	if (this->tv  != 1.0 || Equals(std::abs(this->ts), 45.0, 5.0))
 	{
 		if (this->autoAlignPerpendicular)
 		{
@@ -290,7 +292,7 @@ void TankDriveCmd::AutoAlignParallelFromLimelight()
 
 	// output for debugging
 	// printf("tx = %4.3f  motorSpeed = %4.3f\n",
-	//  tx, motorSpeed);
+	// tx, motorSpeed);
 
 	this->driveSubSystem->SetLeftSpeed(motorSpeed);
     this->driveSubSystem->SetRightSpeed(-motorSpeed);
