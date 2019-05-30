@@ -205,7 +205,7 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 	}
 
     // get horizontal angle to target
- 	double leftSpeed = -Robot::controllerState1->GetLeftY() * 0.40; 
+ 	double leftSpeed = -Robot::controllerState1->GetLeftY() * this->maxAutoAlignSpeed; 
 	double rightSpeed = leftSpeed;
 	double cosAngle = cos(degreeToRadian * this->tx); 
 	
@@ -220,6 +220,14 @@ void TankDriveCmd::AutoAlignPerpendicularFromLimelight()
 		{
 			// turn left, if the initial angle is less than 90 degrees
 			rightSpeed = leftSpeed  + (autoAlignGain * (1.0 - cosAngle));
+
+			// ensure that we aren't really over-driving to the left
+			// if (rightSpeed > this->maxAutoAlignSpeed)
+			// {
+			// 	double ratio = leftSpeed / rightSpeed;	// always < 1
+			// 	rightSpeed = this->maxAutoAlignSpeed;	// set at max that we want to allow
+			// 	leftSpeed = this->maxAutoAlignSpeed * ratio;
+			// }
 		}
 	}
 

@@ -35,7 +35,8 @@ enum Constants
 	kTimeoutMs = 30,
 
 	// encoder counts per inch of rack movement
-	kCountsPerInch = 73015
+	// changed from 73015 after encoders were moved after 5:1 gearbox
+	kCountsPerInch = 14603
 };
 
 /**

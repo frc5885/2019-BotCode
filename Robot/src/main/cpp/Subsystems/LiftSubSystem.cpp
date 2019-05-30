@@ -82,7 +82,7 @@ LiftSubSystem::LiftSubSystem() : frc::Subsystem("LiftSubSystem")
 
     // height offset between front & rear racks when 'level'
     // +ive puts the rear higher than the front, -ive puts it lower
-    this->heightOffset = 0.25;
+    this->heightOffset = 0.0;
     this->logOutput = false;
     this->logStrLoops = 0;
     this->logStrDelay = 10;
